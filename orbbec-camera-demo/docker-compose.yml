@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  orbbec:
+    image: harbor.edgesync.cloud/orbbec-containers/orbbec-ros2-3dcamera:v1.0.0-dev
+    container_name: orbbec-camera-demo
+    privileged: true   
+    tty: true
+    stdin_open: true
+    command: bash
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=/tmp/.docker.xauth
+      - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
+
+    volumes:
+      - /dev:/dev                          
+      - /etc/localtime:/etc/localtime:ro  
+      - /tmp/.X11-unix:/tmp/.X11-unix    
+      - /tmp/.docker.xauth:/tmp/.docker.xauth
+
+    network_mode: host     
+

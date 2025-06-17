@@ -72,10 +72,11 @@ Before running the container, make sure your host has:
 
 ```shell
 mkdir ~/orbbec_ros2_ws/
+cd ~/orbbec_ros2_ws
 git clone https://github.com/Advantech-EdgeSync-Containers/Orbbec-Gemini-3DCamera.git
 ```
 
-1. Run the build script
+2. Run the build script
 
 ```shell
 cd ~/orbbec_ros2_ws/Orbbec-Gemini-3DCamera/orbbec-camera-demo

@@ -2,6 +2,18 @@
 
 > A prebuilt Docker container based on Ubuntu 22.04, providing an all-in-one ROS 2 environment for Orbbec depth camera demonstration.
 
+## Table of Contents
+
+- [Suggested Container Name on Container Catalog](#suggested-container-name-on-container-catalog)  
+- [Container Functional Overview](#container-functional-overview)  
+- [Container Key Features](#container-key-features)  
+- [Supported Host Device List](#supported-host-device-list)  
+- [Prerequisite Software on the Host OS](#prerequisite-software-on-the-host-os)  
+- [Software Components Inside the Container Image](#software-components-inside-the-container-image)  
+- [Quick Start Guide](#quick-start-guide)  
+- [Notes](#notes)  
+- [Demonstration Images](#demonstration-images)  
+
 ## Suggested Container Name on Container Catalog
 
 `orbbec/orbbec-ros2-3dcamera:v1.0.0-dev`  
@@ -41,16 +53,17 @@ Designed for quick testing, development, and evaluation of Orbbec cameras on any
 | -------- | ------------- |
 | x86_64   | Tested        |
 
-## Prerequisite Software Libraries on Host OS
+## Prerequisite Software on the Host OS
 
-Before running the container, make sure your host has:
+Before running the container, ensure that your host system has the following installed:
 
 - **Docker Engine**  
   Version 20.10 or newer is recommended for best compatibility.  
   Installation guide: https://docs.docker.com/engine/install/
 
 - **Docker Compose**  
-  For managing multi-container setups.
+  Required for managing multi-container setups.  
+  Installation guide: https://docs.docker.com/compose/install/
 
 ## Software Components Inside the Container Image
 

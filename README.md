@@ -99,9 +99,14 @@ ros2 launch amr_multi_cam single_camera_bringup.launch.py
 
 You should see **RViz2** launch automatically. In addition, you should see the published **image streams**, **point clouds**, and **TF data**.
 
-> **Note:**  
-> By default, the launch file is configured for the **Gemini 330** series.  
-> If you are using a different Orbbec camera model (e.g., Femto, etc.), please **modify the launch file accordingly** to match your device's configuration.
+> **Note1:**  
+> The launch file is configured by default for the **Gemini 330** series.  
+> If you're using a different Orbbec camera model (e.g., Femto), please **update the launch file accordingly** to match your device configuration.
+
+> **Note2:**  
+> If RViz2 fails to launch, it may be due to an incorrect `DISPLAY` environment setting.  
+> Run `who` to check the active display number (e.g., `(:1)`), then set it using `export DISPLAY=:1` and try again.  
+> You can add this line to your `~/.bashrc` for convenience if needed.
 
 **RGB**, **Depth**, **Stereo IR**, and **Depth to Color Align** Image Display
 

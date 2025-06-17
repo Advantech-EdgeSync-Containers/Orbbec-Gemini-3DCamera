@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   orbbec:
     image: harbor.edgesync.cloud/orbbec-containers/orbbec-ros2-3dcamera:v1.0.0-dev

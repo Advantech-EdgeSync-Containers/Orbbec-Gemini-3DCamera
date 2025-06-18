@@ -125,7 +125,9 @@ chmod +x build.sh
 3. Build the ROS 2 workspace 
 
 ```shell
-colcon build #default compiled
+# Optional: The workspace is already prebuilt inside the container.
+# Run this only if you've made changes to the source code.
+colcon build
 ```
 
 4. Launch the camera node
@@ -175,7 +177,7 @@ The local costmap reflects real-time perception of the robot's immediate surroun
 
 **Camera Intrinsics Acquisition**
 
-The `camera_info` topic outputs intrinsic and extrinsic parameters for each sensor.
+The `camera_info` topic outputs intrinsic parameters for each sensor.
 
 ![](./orbbec-camera-demo/images/camera_info_list.png)
 

@@ -11,6 +11,10 @@ services:
       - DISPLAY=${DISPLAY}
       - XAUTHORITY=/tmp/.docker.xauth
       - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - __GLX_VENDOR_LIBRARY_NAME=nvidia
+      - QT_X11_NO_MITSHM=1
 
     volumes:
       - /dev:/dev                          
@@ -18,5 +22,12 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix    
       - /tmp/.docker.xauth:/tmp/.docker.xauth
 
-    network_mode: host     
-
+    network_mode: host
+    
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]     

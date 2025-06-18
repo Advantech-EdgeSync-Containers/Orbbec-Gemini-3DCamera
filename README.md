@@ -2,21 +2,29 @@
 
 > A prebuilt Docker container based on Ubuntu 22.04, providing an all-in-one ROS 2 environment for Orbbec depth camera demonstration.
 
-## Table of Contents
+#### Table of Contents
 
-- [Suggested Container Name on Container Catalog](#suggested-container-name-on-container-catalog)  
-- [Container Functional Overview](#container-functional-overview)  
-- [Container Key Features](#container-key-features)  
-- [Supported Host Device List](#supported-host-device-list)  
-- [Prerequisite Software on the Host OS](#prerequisite-software-on-the-host-os)  
-- [Software Components Inside the Container Image](#software-components-inside-the-container-image)  
-- [Quick Start Guide](#quick-start-guide)  
-- [Notes](#notes)  
-- [Demonstration Images](#demonstration-images)  
+- [Suggested Container Name on Container Catalog](#suggested-container-name-on-container-catalog)
+
+- [Container Functional Overview](#container-functional-overview)
+
+- [Container Key Features](#container-key-features)
+
+- [Supported Host Device List](#supported-host-device-list)
+
+- [Prerequisite Software on the Host OS (Required)](#prerequisite-software-on-the-host-os-required)
+
+- [Optional: GPU Acceleration Support](#optional-gpu-acceleration-support)
+
+- [Software Components Inside the Container Image](#software-components-inside-the-container-image)
+
+- [Quick Start Guide](#quick-start-guide)
+
+- [Demonstration Images](#demonstration-images)
 
 ## Suggested Container Name on Container Catalog
 
-`orbbec/orbbec-ros2-3dcamera:v1.0.0-dev`  
+`orbbec-containers/orbbec-ros2-3dcamera:v1.0.0-dev`  
 (Recommended format: `vendor/image_name:tag`)
 
 ## Container Functional Overview
@@ -53,9 +61,9 @@ Designed for quick testing, development, and evaluation of Orbbec cameras on any
 | -------- | ------------- |
 | x86_64   | Tested        |
 
-## Prerequisite Software on the Host OS
+## Prerequisite Software on the Host OS (Required)
 
-Before running the container, ensure that your host system has the following software installed:
+Before running the container, ensure that your host system has the following essential software installed:
 
 - **Docker Engine**  
   Version 20.10 or newer is recommended for best compatibility.  
@@ -65,12 +73,22 @@ Before running the container, ensure that your host system has the following sof
   Required for managing multi-container setups.  
   Installation guide: https://docs.docker.com/compose/install/
 
+---
+
+## Optional: GPU Acceleration Support
+
+If your system has an NVIDIA GPU and you wish to enhance the performance of visual tools such as **RViz2** during demo execution, install the following optional components:
+
+- **NVIDIA GPU Driver**  
+  The official NVIDIA GPU driver must be installed on the host to enable GPU hardware acceleration.  
+  Ensure the driver version matches your GPU model and is compatible with the NVIDIA Container Toolkit.  
+  Installation guide: [CUDA Installation Guide for Linux](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html)
+
 - **NVIDIA Container Toolkit**  
-  Required to enable GPU access inside containers. This toolkit provides the necessary runtime for Docker to interface with the NVIDIA driver and GPU resources.  
-  Installation guide (official): https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
-  
-  > **Note for users in mainland China:**  
-  > If you experience slow or blocked access to `nvidia.github.io`, consider using a domestic mirror (e.g., USTC) to install the toolkit.
+  Enables GPU access inside Docker containers. This toolkit allows Docker to interface with the NVIDIA driver and utilize GPU resources.  
+  Installation guide: [NVIDIA Container Toolkit Install Guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+
+>  **Note**: Installing GPU support is not required for running the container, but it can **significantly improve the RViz2 visualization experience** when rendering complex scenes.**This project is preconfigured to enable GPU support by default**. If your system does not have an NVIDIA GPU or if GPU acceleration is not needed, please remove or comment out the related GPU configuration lines in the docker-compose.yml file to avoid runtime issues.
 
 ## Software Components Inside the Container Image
 
@@ -120,13 +138,12 @@ ros2 launch amr_multi_cam single_camera_bringup.launch.py
 You should see **RViz2** launch automatically. In addition, you should see the published **image streams**, **point clouds**, and **TF data**.
 
 > **Note1:**  
-> The launch file is configured by default for the **Gemini 330** series.  
-> If you're using a different Orbbec camera model (e.g., Femto), please **update the launch file accordingly** to match your device configuration.
+> The launch file is configured by default for the **Gemini 330** series.  If you're using a different Orbbec camera model (e.g., Femto), please **update the launch file accordingly** to match your device configuration.
 
 > **Note2:**  
-> If RViz2 fails to launch, it may be due to an incorrect `DISPLAY` environment setting.  
-> Run `who` to check the active display number (e.g., `(:1)`), then set it using `export DISPLAY=:1` and try again.  
-> You can add this line to your `~/.bashrc` for convenience if needed.
+> If RViz2 fails to launch, it may be due to an incorrect `DISPLAY` environment setting.  Run `who` to check the active display number (e.g., `(:1)`), then set it using `export DISPLAY=:1` and try again.  
+
+## Demonstration Images
 
 **RGB**, **Depth**, **Stereo IR**, and **Depth to Color Align** Image Display
 

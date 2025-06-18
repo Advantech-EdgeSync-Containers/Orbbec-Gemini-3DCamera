@@ -55,7 +55,7 @@ Designed for quick testing, development, and evaluation of Orbbec cameras on any
 
 ## Prerequisite Software on the Host OS
 
-Before running the container, ensure that your host system has the following installed:
+Before running the container, ensure that your host system has the following software installed:
 
 - **Docker Engine**  
   Version 20.10 or newer is recommended for best compatibility.  
@@ -64,6 +64,13 @@ Before running the container, ensure that your host system has the following ins
 - **Docker Compose**  
   Required for managing multi-container setups.  
   Installation guide: https://docs.docker.com/compose/install/
+
+- **NVIDIA Container Toolkit**  
+  Required to enable GPU access inside containers. This toolkit provides the necessary runtime for Docker to interface with the NVIDIA driver and GPU resources.  
+  Installation guide (official): https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
+  
+  > **Note for users in mainland China:**  
+  > If you experience slow or blocked access to `nvidia.github.io`, consider using a domestic mirror (e.g., USTC) to install the toolkit.
 
 ## Software Components Inside the Container Image
 
